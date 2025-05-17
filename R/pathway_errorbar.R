@@ -146,7 +146,7 @@ pathway_errorbar <-
            df_meta,
            df_data = abundance,
            meta_id_col,
-           meta_group_col = Group) {
+           meta_group_col) {
     # Add more complete input validation at the beginning of the function
     if(!is.matrix(abundance) && !is.data.frame(abundance)) {
       stop("'abundance' must be a matrix or data frame")
