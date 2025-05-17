@@ -408,17 +408,17 @@ pathway_errorbar <-
 
     bar_errorbar <-
       ggplot2::ggplot(error_bar_pivot_longer_tibble_summarised_ordered,
-             ggplot2::aes(mean, name, fill = group)) +
-      ggplot2::geom_errorbar(
-        ggplot2::aes(xmax = mean + sd, xmin = 0),
-        position = ggplot2::position_dodge(width = 0.8),
-        width = 0.5,
-        linewidth = 0.5,
-        color = "black"
-      ) +
+                      ggplot2::aes(mean, name, fill = group)) +
       ggplot2::geom_bar(stat = "identity",
-               position = ggplot2::position_dodge(width = 0.8),
-               width = 0.8) +
+                        position = ggplot2::position_dodge(width = 0.8),
+                        width = 0.8) +
+      ggplot2::geom_errorbar(
+                ggplot2::aes(xmax = mean + sd, xmin = mean - sd),
+                position = ggplot2::position_dodge(width = 0.8),
+                width = 0.5,
+                linewidth = 0.5,
+                color = "black"
+            ) +
       GGally::geom_stripped_cols(width = 10) +
       ggplot2::scale_fill_manual(values = colors) +
       ggplot2::scale_color_manual(values = colors) +
